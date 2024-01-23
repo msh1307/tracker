@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='./tracker.js'></script>
+    <title>Document</title>
+</head>
+<body>
+    <pre id="log"></pre>
+    <script>
+        (async () => {
+            var e = await module.init(),
+            debug = '';
+
+            debug += 'os.name = ' + e.os.name + '<br/>';
+            debug += 'os.version = ' + e.os.version + '<br/>';
+            debug += 'browser.name = ' + e.browser.name + '<br/>';
+            debug += 'browser.version = ' + e.browser.version + '<br/>';
+            debug += 'resolution = ' + e.resolution.width + 'x' + e.resolution.height + '<br/>';
+            if (e.ip != undefined){
+                debug += 'ip = ' + e.ip.ip + '<br/>';
+                debug += 'ip.country.name = ' + e.ip.country.name + '<br/>';
+                debug += 'ip.region = ' + e.ip.region + '<br/>';
+                debug += 'ip.city = ' + e.ip.city + '<br/>';
+                debug += 'ip.timeZone = ' + e.ip.timeZone + '<br/>';
+                debug += 'ip.asn.name = ' + e.ip.asn.name + '<br/>';
+                debug += 'ip.location.lat = ' + e.ip.location.lat+ '<br/>';
+                debug += 'ip.location.lon = ' + e.ip.location.lon+ '<br/>';
+            }
+            else{
+                debug += 'ip request failed <br/>';
+            }
+            debug += 'canvasfp = '+ e.canvasfp + '<br/>';
+            debug += 'languages = [' + e.languages.join(', ') + ']<br/>';
+            debug += 'referrer = ' + e.referrer + '<br/>';
+            debug += 'hardware_concurrency = ' + e.hardware_concurrency + '<br/>';
+            debug += 'visitor_hash = ' + e.visitor_hash + '<br/>';
+            debug += 'navigator.userAgent = ' + navigator.userAgent + '<br/>';
+            debug += 'navigator.vendor = ' + navigator.vendor + '<br/>';
+            document.getElementById('log').innerHTML = debug;   
+            
+        })();
+
+    </script>
+    
+</body>
+
+</html>
